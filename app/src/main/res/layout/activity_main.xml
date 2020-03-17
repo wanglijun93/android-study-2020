@@ -9,21 +9,17 @@
     tools:context=".MainActivity">
 
     <com.wanglijun.android_study_2020.TopBarView
+        android:id="@+id/topBar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        app:leftText="返回"
-        app:leftTextColor="#008888"
+        app:leftText="@string/back"
+        app:leftTextColor="#003333"
         app:leftTextSize="8sp"
-        app:rightText="更多"
-        app:rightTextColor="#007777"
+        app:rightText="@string/more"
+        app:rightTextColor="#336666"
         app:rightTextSize="8sp"
-        app:title="我是标题"
+        app:title="@string/title"
         app:titleColor="#009999"
         app:titleSize="10sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="我的文案"
-        android:textColorHint="@android:color/holo_red_dark" />
 </LinearLayout>

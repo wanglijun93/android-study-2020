@@ -40,6 +40,17 @@ class TopBarView @JvmOverloads constructor(
     private var mRightLayoutParams: LayoutParams? = null
     private var mTitleLayoutParams: LayoutParams? = null
 
+    interface topBarOnClickListener {
+        fun leftClick()
+        fun rightClick()
+        fun titleClick()
+    }
+
+    var listener: topBarOnClickListener? = null
+
+    fun setOnTopBarClickListener(listener: topBarOnClickListener) {
+        this.listener = listener
+    }
 
     init {
         val attributes = context.obtainStyledAttributes(attrs, R.styleable.TopBar)
@@ -59,6 +70,11 @@ class TopBarView @JvmOverloads constructor(
 
         attributes.recycle()
 
+        initView(context)
+
+    }
+
+    private fun initView(context: Context) {
         mTvTitle = TextView(context)
         mLeftButton = Button(context)
         mRightButton = Button(context)
@@ -100,5 +116,17 @@ class TopBarView @JvmOverloads constructor(
             LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT)
         mTitleLayoutParams?.addRule(CENTER_IN_PARENT, TRUE)
         addView(mTvTitle, mTitleLayoutParams)
+
+        mLeftButton?.setOnClickListener {
+            listener?.leftClick()
+        }
+        mRightButton?.setOnClickListener {
+            listener?.rightClick()
+        }
+        mTvTitle?.setOnClickListener {
+            listener?.titleClick()
+        }
     }
+
+
 }
