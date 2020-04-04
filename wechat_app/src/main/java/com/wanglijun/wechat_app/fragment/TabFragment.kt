@@ -45,10 +45,25 @@ class TabFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         tvTitle.text = mTitle
+        tvTitle.setOnClickListener {
+            mListener?.onClick("微信改变")
+        }
     }
 
     fun changeTitle(title: String) {
-        if (isAdded.not()){return}
+        if (isAdded.not()) {
+            return
+        }
         tvTitle.text = title
+    }
+
+    interface onTitleChangeListener {
+        fun onClick(title: String)
+    }
+
+    var mListener: onTitleChangeListener? = null
+
+    fun setOnTitleChangeListener(onTitleChangeListener: onTitleChangeListener) {
+        mListener = onTitleChangeListener
     }
 }

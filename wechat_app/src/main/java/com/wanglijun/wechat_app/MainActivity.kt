@@ -29,14 +29,22 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         vpMain.offscreenPageLimit = mTitleList.size
         vpMain.adapter = object : FragmentPagerAdapter(supportFragmentManager) {
             override fun getItem(position: Int): Fragment {
-                return TabFragment.newInstance(mTitleList[position])
+                val fragment =  TabFragment.newInstance(mTitleList[position])
+                if (position == 0 ){
+                    fragment.setOnTitleChangeListener(object :TabFragment.onTitleChangeListener{
+                        override fun onClick(title: String) {
+                            changeWeChatTitle(title)
+                        }
+                    })
+                }
+                return fragment
             }
 
             override fun getCount() = mTitleList.size
 
             override fun instantiateItem(container: ViewGroup, position: Int): Any {
-                val fragment =  super.instantiateItem(container, position) as TabFragment
-                mFragmentList?.put(position,fragment)
+                val fragment = super.instantiateItem(container, position) as TabFragment
+                mFragmentList?.put(position, fragment)
                 return fragment
             }
 
@@ -68,5 +76,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             btMe -> {
             }
         }
+    }
+
+    /**
+     * 修改微信标题
+     *
+     * @param title 标题
+     */
+    fun changeWeChatTitle(title: String) {
+        btWeChat.text = title
     }
 }
