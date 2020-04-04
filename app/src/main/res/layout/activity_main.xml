@@ -22,4 +22,10 @@
         app:titleColor="#009999"
         app:titleSize="10sp" />
 
+    <View
+        android:id="@+id/view"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:background="@color/colorAccent" />
 </LinearLayout>
