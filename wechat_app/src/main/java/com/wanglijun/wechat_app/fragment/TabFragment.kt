@@ -32,7 +32,6 @@ class TabFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mTitle = arguments?.getString(BUNDLE_KEY_TITLE, "")
-
     }
 
     override fun onCreateView(
@@ -46,5 +45,10 @@ class TabFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         tvTitle.text = mTitle
+    }
+
+    fun changeTitle(title: String) {
+        if (isAdded.not()){return}
+        tvTitle.text = title
     }
 }
