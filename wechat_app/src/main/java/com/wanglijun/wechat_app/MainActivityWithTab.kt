@@ -4,13 +4,14 @@ import android.os.Bundle
 import android.util.SparseArray
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.wanglijun.wechat_app.fragment.TabFragment
-import kotlinx.android.synthetic.main.activity_main.*
+import com.wanglijun.wechat_app.view.TabView
+import kotlinx.android.synthetic.main.activity_main.vpMain
+import kotlinx.android.synthetic.main.activity_tab.*
 
 /**
  * @author： wlj
@@ -19,13 +20,13 @@ import kotlinx.android.synthetic.main.activity_main.*
  * @desc: 首页
  */
 @Suppress("DEPRECATION")
-class MainActivity : AppCompatActivity(), View.OnClickListener {
+class MainActivityWithTab : AppCompatActivity(), View.OnClickListener {
     private val mTitleList = arrayListOf<String>("微信", "联系人", "朋友圈", "我")
     private var mFragmentList: SparseArray<TabFragment>? = SparseArray()
-    private var mTabs = arrayListOf<Button>()
+    private var mTabs = arrayListOf<TabView>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_tab)
         mFragmentList
         initView()
         initViewPager()
@@ -39,15 +40,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         vpMain.offscreenPageLimit = mTitleList.size
         vpMain.adapter = object : FragmentPagerAdapter(supportFragmentManager) {
             override fun getItem(position: Int): Fragment {
-                val fragment = TabFragment.newInstance(mTitleList[position])
-                if (position == 0) {
-                    fragment.setOnTitleChangeListener(object : TabFragment.onTitleChangeListener {
-                        override fun onClick(title: String) {
-                            changeWeChatTitle(title)
-                        }
-                    })
-                }
-                return fragment
+                return TabFragment.newInstance(mTitleList[position])
             }
 
             override fun getCount() = mTitleList.size
@@ -76,8 +69,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     val left = mTabs.get(position)
                     val right = mTabs.get(position + 1)
 
-                    left.text = (1 - positionOffset).toString()
-                    right.text = positionOffset.toString()
+                    left.setProgress(1 - positionOffset)
+                    right.setProgress(positionOffset)
                 }
             }
 
@@ -90,37 +83,25 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
      * 初始化控件
      */
     private fun initView() {
-        btWeChat.setOnClickListener(this)
-        btFriend.setOnClickListener(this)
-        btFind.setOnClickListener(this)
-        btMe.setOnClickListener(this)
+        tabWeChat.setOnClickListener(this)
+        tabFriend.setOnClickListener(this)
+        tabFind.setOnClickListener(this)
+        tabMe.setOnClickListener(this)
 
-        mTabs.add(btWeChat)
-        mTabs.add(btFriend)
-        mTabs.add(btFind)
-        mTabs.add(btMe)
+        tabWeChat.setIconAndText(R.mipmap.wechat,R.mipmap.wechat_select,"微信")
+        tabFriend.setIconAndText(R.mipmap.friend,R.mipmap.friend_select,"联系人")
+        tabFind.setIconAndText(R.mipmap.find,R.mipmap.find_select,"查找")
+        tabMe.setIconAndText(R.mipmap.me,R.mipmap.me_select,"我")
+
+        mTabs.add(tabWeChat)
+        mTabs.add(tabFriend)
+        mTabs.add(tabFind)
+        mTabs.add(tabMe)
+
+        tabWeChat.setProgress(1f)
     }
 
     override fun onClick(v: View?) {
-        when (v) {
-            btWeChat -> {
-                mFragmentList?.get(0)?.changeTitle("changeTitle = 微信")
-            }
-            btFriend -> {
-            }
-            btFind -> {
-            }
-            btMe -> {
-            }
-        }
     }
 
-    /**
-     * 修改微信标题
-     *
-     * @param title 标题
-     */
-    fun changeWeChatTitle(title: String) {
-        btWeChat.text = title
-    }
 }

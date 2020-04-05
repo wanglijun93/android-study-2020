@@ -20,32 +20,31 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <Button
-            android:id="@+id/btWeChat"
+        <com.wanglijun.wechat_app.view.TabView
+            android:id="@+id/tabWeChat"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="微信" />
+            android:layout_weight="1" />
 
-        <Button
-            android:id="@+id/btFriend"
+        <com.wanglijun.wechat_app.view.TabView
+            android:id="@+id/tabFriend"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="通讯录" />
+            android:layout_weight="1" />
 
-        <Button
-            android:id="@+id/btFind"
+        <com.wanglijun.wechat_app.view.TabView
+            android:id="@+id/tabFind"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="发现" />
+            android:layout_weight="1" />
 
-        <Button
-            android:id="@+id/btMe"
+        <com.wanglijun.wechat_app.view.TabView
+            android:id="@+id/tabMe"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="我" />
+            android:layout_weight="1" />
+
     </LinearLayout>
 </LinearLayout>
+
+
