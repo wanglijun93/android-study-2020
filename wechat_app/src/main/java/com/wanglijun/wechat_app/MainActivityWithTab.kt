@@ -2,7 +2,6 @@ package com.wanglijun.wechat_app
 
 import android.os.Bundle
 import android.util.SparseArray
-import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -20,7 +19,7 @@ import kotlinx.android.synthetic.main.activity_tab.*
  * @desc: 首页
  */
 @Suppress("DEPRECATION")
-class MainActivityWithTab : AppCompatActivity(), View.OnClickListener {
+class MainActivityWithTab : AppCompatActivity() {
     private val mTitleList = arrayListOf<String>("微信", "联系人", "朋友圈", "我")
     private var mFragmentList: SparseArray<TabFragment>? = SparseArray()
     private var mTabs = arrayListOf<TabView>()
@@ -30,7 +29,19 @@ class MainActivityWithTab : AppCompatActivity(), View.OnClickListener {
         mFragmentList
         initView()
         initViewPager()
+        initEvents()
+    }
 
+    /**
+     * 给底部tab设置点击事件
+     */
+    private fun initEvents(){
+        mTabs.forEachIndexed { index, tabView ->
+            tabView.setOnClickListener {
+                vpMain.setCurrentItem(index,false)
+                setCurrentTab(index)
+            }
+        }
     }
 
     /**
@@ -66,8 +77,8 @@ class MainActivityWithTab : AppCompatActivity(), View.OnClickListener {
                 positionOffsetPixels: Int
             ) {
                 if (positionOffset > 0) {
-                    val left = mTabs.get(position)
-                    val right = mTabs.get(position + 1)
+                    val left = mTabs[position]
+                    val right = mTabs[position + 1]
 
                     left.setProgress(1 - positionOffset)
                     right.setProgress(positionOffset)
@@ -83,25 +94,31 @@ class MainActivityWithTab : AppCompatActivity(), View.OnClickListener {
      * 初始化控件
      */
     private fun initView() {
-        tabWeChat.setOnClickListener(this)
-        tabFriend.setOnClickListener(this)
-        tabFind.setOnClickListener(this)
-        tabMe.setOnClickListener(this)
-
-        tabWeChat.setIconAndText(R.mipmap.wechat,R.mipmap.wechat_select,"微信")
-        tabFriend.setIconAndText(R.mipmap.friend,R.mipmap.friend_select,"联系人")
-        tabFind.setIconAndText(R.mipmap.find,R.mipmap.find_select,"查找")
-        tabMe.setIconAndText(R.mipmap.me,R.mipmap.me_select,"我")
+        tabWeChat.setIconAndText(R.mipmap.wechat, R.mipmap.wechat_select, "微信")
+        tabFriend.setIconAndText(R.mipmap.friend, R.mipmap.friend_select, "联系人")
+        tabFind.setIconAndText(R.mipmap.find, R.mipmap.find_select, "查找")
+        tabMe.setIconAndText(R.mipmap.me, R.mipmap.me_select, "我")
 
         mTabs.add(tabWeChat)
         mTabs.add(tabFriend)
         mTabs.add(tabFind)
         mTabs.add(tabMe)
-
-        tabWeChat.setProgress(1f)
+        //默认选中第0个tab
+        setCurrentTab(0)
     }
 
-    override fun onClick(v: View?) {
+    /**
+     * 设置选中的tab
+     *
+     * @param pos 选中的位置
+     */
+    private fun setCurrentTab(pos: Int) {
+        mTabs.forEachIndexed { index, tabView ->
+            if (index == pos) {
+                tabView.setProgress(1f)
+            } else {
+                tabView.setProgress(0f)
+            }
+        }
     }
-
 }
