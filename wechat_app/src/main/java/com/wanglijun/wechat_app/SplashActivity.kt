@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.wanglijun.wechat_app.fragment.SplashFragment
+import com.wanglijun.wechat_app.transformer.ScaleTransformer
 import kotlinx.android.synthetic.main.activity_splash.*
 
 /**
@@ -33,5 +34,6 @@ class SplashActivity : AppCompatActivity() {
 
             override fun getCount() = imageList.size
         }
+        vpMain.setPageTransformer(true, ScaleTransformer())
     }
 }
