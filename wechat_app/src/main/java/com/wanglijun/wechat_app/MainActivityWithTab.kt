@@ -18,18 +18,26 @@ import kotlinx.android.synthetic.main.activity_tab.*
  * @email: wanglijundev@gmail.com
  * @desc: 首页
  */
+const val BUNDLE_KEY_POS = "bundle_key_pos"
 @Suppress("DEPRECATION")
 class MainActivityWithTab : AppCompatActivity() {
-    private val mTitleList = arrayListOf<String>("微信", "联系人", "朋友圈", "我")
+    private val mTitleList = arrayListOf<String>("微信", "联系人", "发现", "我")
     private var mFragmentList: SparseArray<TabFragment>? = SparseArray()
     private var mTabs = arrayListOf<TabView>()
+    private var mCurTabPos = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tab)
+        mCurTabPos = savedInstanceState?.getInt(BUNDLE_KEY_POS,0) ?: 0
         mFragmentList
         initView()
         initViewPager()
         initEvents()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putInt(BUNDLE_KEY_POS,vpMain.currentItem)
+        super.onSaveInstanceState(outState)
     }
 
     /**
@@ -96,7 +104,7 @@ class MainActivityWithTab : AppCompatActivity() {
     private fun initView() {
         tabWeChat.setIconAndText(R.mipmap.wechat, R.mipmap.wechat_select, "微信")
         tabFriend.setIconAndText(R.mipmap.friend, R.mipmap.friend_select, "联系人")
-        tabFind.setIconAndText(R.mipmap.find, R.mipmap.find_select, "查找")
+        tabFind.setIconAndText(R.mipmap.find, R.mipmap.find_select, "发现")
         tabMe.setIconAndText(R.mipmap.me, R.mipmap.me_select, "我")
 
         mTabs.add(tabWeChat)
@@ -104,7 +112,7 @@ class MainActivityWithTab : AppCompatActivity() {
         mTabs.add(tabFind)
         mTabs.add(tabMe)
         //默认选中第0个tab
-        setCurrentTab(0)
+        setCurrentTab(mCurTabPos)
     }
 
     /**
