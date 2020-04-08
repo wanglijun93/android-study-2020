@@ -1,9 +1,10 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppBaseTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">#ffff9431</item>
-        <item name="colorPrimaryDark">#ffD56600</item>
+    <style name="AppBaseTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
