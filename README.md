@@ -5,3 +5,5 @@
 - 仿微信滑动tab
 - splash欢迎页
 - banner带有放大缩小、左右间距
+## AndroidSlidingUpPanel
+- 抽屉框架学习，可以从底部拉出一个抽屉，带有悬停效果
