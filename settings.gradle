@@ -1,3 +1,4 @@
 include ':app'
 rootProject.name='android-study-2020'
 include ':wechat_app'
+include ':slidinguppanel'

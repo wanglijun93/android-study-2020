@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">slidingUpPanel</string>
+    <string name="action_settings">设置</string>
+    <string name="action_hide">隐藏 Panel</string>
+    <string name="action_show">显示 Panel</string>
+    <string name="action_anchor_enable">Enable Anchor Point</string>
+    <string name="action_anchor_disable">Disable Anchor Point</string>
+</resources>
