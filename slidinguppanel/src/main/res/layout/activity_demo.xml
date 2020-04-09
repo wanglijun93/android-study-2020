@@ -10,7 +10,7 @@
     sothree:umanoOverlay="true"
     sothree:umanoPanelHeight="200dp"
     sothree:umanoScrollableView="@+id/list"
-    sothree:umanoShadowHeight="4dp">
+    sothree:umanoShadowHeight="0dp">
 
     <RelativeLayout
         android:layout_width="match_parent"

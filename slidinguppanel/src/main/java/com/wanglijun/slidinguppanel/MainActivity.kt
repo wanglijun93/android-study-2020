@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
             "Of",
             "SlidingUpPanelLayout"
         )
-    private val TAG = "DemoActivity"
+    private val _tag = "MainActivity"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_demo)
@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity() {
                 panel: View,
                 slideOffset: Float
             ) {
-                Log.i(TAG, "onPanelSlide, offset $slideOffset")
+                Log.i(_tag, "onPanelSlide, offset $slideOffset")
             }
 
             override fun onPanelStateChanged(
@@ -71,7 +71,7 @@ class MainActivity : AppCompatActivity() {
                 previousState: PanelState,
                 newState: PanelState
             ) {
-                Log.i(TAG, "onPanelStateChanged $newState")
+                Log.i(_tag, "onPanelStateChanged $newState")
             }
         })
         sliding_layout.setFadeOnClickListener(View.OnClickListener {
