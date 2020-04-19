@@ -1,4 +1,5 @@
-include ':app'
+include ':app', ':calendarview'
 rootProject.name='android-study-2020'
 include ':wechat_app'
 include ':slidinguppanel'
+include ':calendarviewlj'
