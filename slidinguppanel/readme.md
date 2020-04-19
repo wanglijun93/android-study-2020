@@ -15,3 +15,5 @@
         enum name="anchored" value="2" />
         enum name="hidden" value="3" />
 - name="umanoScrollInterpolator" format="reference" />
+
+### 仿地图上拉抽屉效果，比如 探街
