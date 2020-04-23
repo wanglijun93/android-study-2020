@@ -10,11 +10,14 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 
 /**
- * @author： wlj
- * @Date: 2020-03-17
- * @email: wanglijundev@gmail.com
- * @desc: 自定义TopBar
- */
+ * @author 王丽君
+ * Email：wanglijundev@gmail.com
+ * 描述：自定义bar
+ * 修改历史:
+ * 修改日期         作者        版本        描述说明
+ *
+ * 创建于： 2020-03-17 21:02
+ **/
 class TopBarView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : RelativeLayout(context, attrs, defStyleAttr) {

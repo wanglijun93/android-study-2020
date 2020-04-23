@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    tools:context=".TopBarActivity">
+
+    <com.wanglijun.android_study_2020.TopBarView
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:leftText="@string/back"
+        app:leftTextColor="#003333"
+        app:leftTextSize="8sp"
+        app:rightText="@string/more"
+        app:rightTextColor="#336666"
+        app:rightTextSize="8sp"
+        app:title="@string/title"
+        app:titleColor="#009999"
+        app:titleSize="10sp" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:background="@color/colorAccent" />
+</LinearLayout>
