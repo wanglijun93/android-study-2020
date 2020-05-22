@@ -4,21 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
-    android:gravity="center"
     android:orientation="vertical"
     android:padding="10dp"
-    tools:context=".MainActivity">
+    tools:context=".Main3Activity">
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/dialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="透明状态栏" />
+        android:text="我的dialog" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/toast"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="各种弹框" />
+        android:text="我的Toast" />
+
+    <Button
+        android:id="@+id/snackBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="我的SnackBar" />
 </LinearLayout>
